@@ -50,7 +50,7 @@ class TracerStudyList extends Component
             $query->whereGraduationYear($this->graduation_year);
         }
 
-        $tracer_studies = $query->paginate();
+        $tracer_studies = $query->paginate(2);
 
         return $tracer_studies;
     }

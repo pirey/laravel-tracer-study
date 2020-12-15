@@ -17,12 +17,14 @@
                             <td>{{ $tracer_study->name }}</td>
                             <td>{{ $tracer_study->graduation_year }}</td>
                             <td>{{ $tracer_study->program_study }}</td>
-                            <td></td>
+                            <td><a href="/admin/tracer-studies/{{ $tracer_study->id }}">{{ __('Detail') }}</a></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+        <div class="card-footer pb-0">
+            {{ $tracer_studies->links() }}
+        </div>
     </div>
-    {{ $tracer_studies->links() }}
 </div>
