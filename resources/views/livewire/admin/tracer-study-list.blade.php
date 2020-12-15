@@ -1,6 +1,9 @@
 <div class="container mt-3">
     <div class="card">
-        <div class="card-header"><h2>{{ __('Tracer Study Submissions') }}</h2></div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h2>{{ __('Tracer Study Submissions') }}</h2>
+            <a class="btn btn-success" href="/admin/tracer-studies/download">{{ __('Export') }}</a>
+        </div>
         <div class="card-body table-responsive p-0">
             <table class="table mb-0">
                 <thead>
