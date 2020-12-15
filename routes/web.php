@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::livewire('/tracer-study-submission', 'tracer-study-submission')->layout('layouts.site');
+
+Route::livewire('/admin/tracer-studies', 'admin.tracer-study-list')->layout('layouts.admin');

@@ -38,16 +38,7 @@ class TracerStudySubmission extends Component
             'occupation' => $this->occupation
         ]);
 
-        $this->resetProperties();
+        $this->reset();
         $this->success_message = __('Thank you for your submission');
-    }
-
-    private function resetProperties()
-    {
-        $this->name = '';
-        $this->currently_working = true;
-        $this->occupation = '';
-        $this->program_study = '';
-        $this->graduation_year = '';
     }
 }
