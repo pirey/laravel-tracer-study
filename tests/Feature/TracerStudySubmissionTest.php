@@ -15,14 +15,17 @@ class TracerStudySubmissionTest extends TestCase
 
     public function testRoute()
     {
-        $response = $this->get('/tracer-study-submission');
-        $response->assertSeeLivewire('tracer-study-submission');
+        $this->get('/')->assertRedirect('/tracer-study-submission');
+
+        $this->get('/tracer-study-submission')->assertSeeLivewire('tracer-study-submission');
     }
 
     public function testSubmitTracerStudy()
     {
         Livewire::test(TracerStudySubmission::class)
             ->set('name', 'bob')
+            ->set('program_study', 'computer science')
+            ->set('graduation_year', '2017')
             ->set('currently_working', true)
             ->set('occupation', 'software developer')
             ->call('submit');
@@ -34,10 +37,14 @@ class TracerStudySubmissionTest extends TestCase
     {
         Livewire::test(TracerStudySubmission::class)
             ->set('name', 'bob')
+            ->set('program_study', 'computer science')
+            ->set('graduation_year', '2017')
             ->set('currently_working', true)
             ->set('occupation', 'software developer')
             ->call('submit')
             ->assertSet('name', '')
+            ->assertSet('program_study', '')
+            ->assertSet('graduation_year', '')
             ->assertSet('currently_working', true)
             ->assertSet('occupation', '');
     }
@@ -46,21 +53,27 @@ class TracerStudySubmissionTest extends TestCase
     {
         Livewire::test(TracerStudySubmission::class)
             ->set('name', 'bob')
+            ->set('program_study', 'computer science')
+            ->set('graduation_year', '2017')
             ->set('currently_working', true)
             ->set('occupation', 'software developer')
             ->call('submit')
-            ->assertSet('successMessage', __('Thank you for your submission'));
+            ->assertSet('success_message', __('Thank you for your submission'));
     }
 
     public function testValidation()
     {
         Livewire::test(TracerStudySubmission::class)
             ->set('name', '')
+            ->set('program_study', '')
+            ->set('graduation_year', '')
             ->set('currently_working', null)
             ->set('occupation', '')
             ->call('submit')
             ->assertHasErrors([
                 'name' => 'required',
+                'program_study' => 'required',
+                'graduation_year' => 'required',
                 'currently_working' => 'required',
             ])
             ->set('currently_working', true)

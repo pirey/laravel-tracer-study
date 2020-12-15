@@ -7,9 +7,11 @@ use Livewire\Component;
 
 class TracerStudySubmission extends Component
 {
-    public $successMessage = '';
+    public $success_message = '';
 
     public $name = '';
+    public $program_study = '';
+    public $graduation_year = '';
     public $currently_working = true;
     public $occupation = '';
 
@@ -22,18 +24,22 @@ class TracerStudySubmission extends Component
     {
         $this->validate([
             'name' => 'required',
+            'program_study' => 'required',
+            'graduation_year' => 'required',
             'currently_working' => 'required|bool',
             'occupation' => 'required_if:currently_working,true,1',
         ]);
 
         TracerStudy::create([
             'name' => $this->name,
+            'program_study' => $this->program_study,
+            'graduation_year' => $this->graduation_year,
             'currently_working' => $this->currently_working,
             'occupation' => $this->occupation
         ]);
 
         $this->resetProperties();
-        $this->successMessage = __('Thank you for your submission');
+        $this->success_message = __('Thank you for your submission');
     }
 
     private function resetProperties()
@@ -41,5 +47,7 @@ class TracerStudySubmission extends Component
         $this->name = '';
         $this->currently_working = true;
         $this->occupation = '';
+        $this->program_study = '';
+        $this->graduation_year = '';
     }
 }

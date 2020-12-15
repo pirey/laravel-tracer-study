@@ -15,6 +15,8 @@ class TracerStudyTest extends TestCase
         $model = factory(TracerStudy::class)->create();
 
         $this->assertNotNull($model->name);
+        $this->assertNotNull($model->program_study);
+        $this->assertNotNull($model->graduation_year);
         $this->assertNotNull($model->currently_working);
         $this->assertNotNull($model->occupation);
     }

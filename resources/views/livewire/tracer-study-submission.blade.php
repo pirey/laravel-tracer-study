@@ -2,14 +2,28 @@
     <div class="row">
         <div class="col-6">
             <h2>{{ __('Tracer Study Submission') }}</h2>
-            @if ($successMessage)
-                <div class="alert alert-success dismissable">{{ $successMessage }}</div>
+            @if ($success_message && $errors->isEmpty())
+                <div class="alert alert-success dismissable">{{ $success_message }}</div>
             @endif
             <form wire:submit.prevent="submit">
                 <div class="mb-3">
                     <label class="form-label">{{ __('Name') }}</label>
                     <input wire:model="name" class="form-control @error('name') is-invalid @enderror" name="name" />
                     @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ __('Program Study') }}</label>
+                    <input wire:model="program_study" class="form-control @error('program_study') is-invalid @enderror" program_study="program_study" />
+                    @error('program_study')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ __('Graduation Year') }}</label>
+                    <input wire:model="graduation_year" class="form-control @error('graduation_year') is-invalid @enderror" graduation_year="graduation_year" />
+                    @error('graduation_year')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

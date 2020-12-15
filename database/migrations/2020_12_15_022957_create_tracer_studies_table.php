@@ -16,6 +16,8 @@ class CreateTracerStudiesTable extends Migration
         Schema::create('tracer_studies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('program_study');
+            $table->string('graduation_year');
             $table->unsignedSmallInteger('currently_working');
             $table->string('occupation');
             $table->timestamps();
