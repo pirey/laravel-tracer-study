@@ -11,6 +11,10 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/tracer-study-submission');
 });
+
+Route::livewire('/tracer-study-submission', 'tracer-study-submission')->layout('layouts.site');
